@@ -54,6 +54,12 @@ class BaseInstaller extends LibraryInstaller
         $type = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', substr($class, 0, strrpos($class, 'Installer'))));
         $basePath = $extra['pw-' . $type . '-path'] ?? $defaultBasePath;
 
+        // if base path is set, make sure that it has a trailing slash
+        $basePath = trim($basePath, '/');
+        if (strlen($basePath)) {
+            $basePath .= '/';
+        }
+
         return $basePath;
     }
 
@@ -89,7 +95,6 @@ class BaseInstaller extends LibraryInstaller
     protected function getFullPath(PackageInterface $package, $defaultBasePath) {
         $basePath = $this->getBasePath($defaultBasePath);
         $name = $this->getName($package);
-        $path = trim($basePath, '/') . '/' . $name;
-        return $path;
+        return $basePath . $name;
     }
 }

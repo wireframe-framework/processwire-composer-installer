@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fix an issue where a typo in ModuleInstaller prevented it from working properly.
+- Fix an issue with missing basePath being treated as an absolute path.
 
 ## [0.0.1] - 2019-06-03
 
