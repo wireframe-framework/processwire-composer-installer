@@ -20,7 +20,7 @@ class ModuleInstaller extends BaseInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->getFullPath($package, 'site/modules');)
+        return $this->getFullPath($package, 'site/modules'));
     }
 
     /**

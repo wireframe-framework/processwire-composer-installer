@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2] - 2019-06-03
+
+### Fixed
+- Fix an issue where a typo in ModuleInstaller prevented it from working properly.
+
 ## [0.0.1] - 2019-06-03
 
 ### Added
