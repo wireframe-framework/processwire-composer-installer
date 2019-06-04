@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Class constant BASE_PATH for ModuleInstaller and SiteProfileInstaller.
 - If the site directory doesn't have 'site-' prefix, add it automatically.
 - Detect if the site directory is nested within repository and move it to root.
 
