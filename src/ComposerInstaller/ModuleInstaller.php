@@ -18,16 +18,16 @@ class ModuleInstaller extends BaseInstaller
     /**
      * {@inheritDoc}
      */
-    public function getInstallPath(PackageInterface $package)
+    public function supports($packageType)
     {
-        return $this->getFullPath($package, 'site/modules');
+        return $packageType === 'pw-module';
     }
 
     /**
      * {@inheritDoc}
      */
-    public function supports($packageType)
+    public function getInstallPath(PackageInterface $package)
     {
-        return $packageType === 'pw-module';
+        return $this->getFullPath($package, 'site/modules');
     }
 }
