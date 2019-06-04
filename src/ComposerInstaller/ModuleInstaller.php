@@ -16,7 +16,7 @@ use Composer\Package\PackageInterface;
 class ModuleInstaller extends BaseInstaller
 {
     /**
-     * @var string Base path for site profiles
+     * @var string Base path for modules
      */
     const BASE_PATH = 'site/modules';
 
