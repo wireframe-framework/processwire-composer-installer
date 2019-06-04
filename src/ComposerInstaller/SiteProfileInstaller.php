@@ -43,10 +43,12 @@ class SiteProfileInstaller extends BaseInstaller
         $path = $this->getInstallPath($package);
         $site = $this->getNestedSiteDirectoryName($path);
         if ($site) {
+            $basePath = $this->getBasePath(static::BASE_PATH);
+            $tempPath = $basePath . 'temp-' . basenname($path);
             $filesystem = new Filesystem();
-            $filesystem->rename($path, 'temp-' . $path);
-            $filesystem->rename('temp-' . $path . $site, $this->getBasePath(static::BASE_PATH) . $site);
-            $filesystem->remove('temp-' . $path);
+            $filesystem->rename($path, $tempPath);
+            $filesystem->rename($tempPath . '/' . $site, $basePath . $site);
+            $filesystem->remove($tempPath);
         }
     }
 
