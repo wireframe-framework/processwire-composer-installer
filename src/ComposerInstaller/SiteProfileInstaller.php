@@ -61,7 +61,7 @@ class SiteProfileInstaller extends BaseInstaller
      */
     public function getNestedSiteDirectoryName($path) {
         $site = null;
-        $files = new DirectoryIterator($path);
+        $files = new \DirectoryIterator($path);
         foreach ($files as $file) {
             if ($file->isDot() || !$file->isDir()) continue;
             $filename = $file->getFilename();
