@@ -2,6 +2,7 @@
 
 namespace wireframe\ComposerInstaller;
 
+use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Package\PackageInterface;
 use Composer\Util\Filesystem;
 
@@ -27,7 +28,7 @@ class SiteProfileInstaller extends BaseInstaller
     /**
      * {@inheritDoc}
      */
-    public function install(\Composer\InstalledRepositoryInterface $repo, \Composer\PackageInterface $package)
+    public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         parent::install($repo, $package);
 
