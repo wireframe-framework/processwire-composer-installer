@@ -27,7 +27,7 @@ class SiteProfileInstaller extends BaseInstaller
     /**
      * {@inheritDoc}
      */
-    public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
+    public function install(Composer\InstalledRepositoryInterface $repo, Composer\PackageInterface $package)
     {
         parent::install($repo, $package);
 
