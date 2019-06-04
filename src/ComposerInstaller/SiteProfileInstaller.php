@@ -18,6 +18,11 @@ use Composer\Util\Filesystem;
 class SiteProfileInstaller extends BaseInstaller
 {
     /**
+     * @var string Base path for site profiles
+     */
+    const BASE_PATH = '';
+
+    /**
      * {@inheritDoc}
      */
     public function supports($packageType)
@@ -40,7 +45,7 @@ class SiteProfileInstaller extends BaseInstaller
         if ($site) {
             $filesystem = new Filesystem();
             $filesystem->rename($path, 'temp-' . $path);
-            $filesystem->rename('temp-' . $path . $site, $this->getBasePath('') . $site);
+            $filesystem->rename('temp-' . $path . $site, $this->getBasePath(static::BASE_PATH) . $site);
             $filesystem->remove('temp-' . $path);
         }
     }
@@ -50,7 +55,7 @@ class SiteProfileInstaller extends BaseInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->getFullPath($package, '');
+        return $this->getFullPath($package, static::BASE_PATH);
     }
 
     /**

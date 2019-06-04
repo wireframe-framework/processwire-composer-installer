@@ -16,6 +16,11 @@ use Composer\Package\PackageInterface;
 class ModuleInstaller extends BaseInstaller
 {
     /**
+     * @var string Base path for site profiles
+     */
+    const BASE_PATH = 'site/modules';
+
+    /**
      * {@inheritDoc}
      */
     public function supports($packageType)
@@ -28,6 +33,6 @@ class ModuleInstaller extends BaseInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->getFullPath($package, 'site/modules');
+        return $this->getFullPath($package, static::BASE_PATH);
     }
 }
