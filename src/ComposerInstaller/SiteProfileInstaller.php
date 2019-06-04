@@ -44,7 +44,7 @@ class SiteProfileInstaller extends BaseInstaller
         $site = $this->getNestedSiteDirectoryName($path);
         if ($site) {
             $basePath = $this->getBasePath(static::BASE_PATH);
-            $tempPath = $basePath . 'temp-' . basenname($path);
+            $tempPath = $basePath . 'temp-' . \basename($path);
             $filesystem = new Filesystem();
             $filesystem->rename($path, $tempPath);
             $filesystem->rename($tempPath . '/' . $site, $basePath . $site);
