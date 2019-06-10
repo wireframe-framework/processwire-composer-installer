@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2019-06-10
+
+### Fixed
+- Fix an issue where 'site-' prefix was unnecessarily added to module directories.
+
 ## [0.0.3] - 2019-06-07
 
 ### Added

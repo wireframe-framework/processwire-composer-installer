@@ -61,6 +61,27 @@ class SiteProfileInstaller extends BaseInstaller
     }
 
     /**
+     * Get the directory name from package name
+     *
+     * Default directory name can be overridden by specifying extra argument
+     * "installer-name" in the composer.json of the package in question.
+     *
+     * @param PackageInterface $package
+     * @return string Module or site profile name.
+     */
+    protected function getName(PackageInterface $package) {
+        // fetch initial directory name
+        $name = parent::getName($package);
+
+        // make sure that the directory name has a site- prefix; if not, add
+        if (strpos($name, 'site-') !== 0) {
+            $name = 'site-' . $name;
+        }
+
+        return $name;
+    }
+
+    /**
      * Get nested site directory path, or null if none found
      *
      * @param string $path

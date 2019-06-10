@@ -82,11 +82,6 @@ class BaseInstaller extends LibraryInstaller
             $name = $extra['installer-name'];
         }
 
-        // make sure that the directory name has a site- prefix; if not, add
-        if (strpos($name, 'site-') !== 0) {
-            $name = 'site-' . $name;
-        }
-
         return $name;
     }
 
