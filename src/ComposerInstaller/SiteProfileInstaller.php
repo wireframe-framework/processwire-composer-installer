@@ -67,7 +67,7 @@ class SiteProfileInstaller extends BaseInstaller
      * "installer-name" in the composer.json of the package in question.
      *
      * @param PackageInterface $package
-     * @return string Module or site profile name.
+     * @return string Site profile directory name.
      */
     protected function getName(PackageInterface $package) {
         // fetch initial directory name

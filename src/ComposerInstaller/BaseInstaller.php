@@ -43,6 +43,12 @@ class BaseInstaller extends LibraryInstaller
      * @return string Base path.
      */
     protected function getBasePath($defaultBasePath) {
+        // if we're already in the site directory, remove "site/" from the beginning
+        // of the default base path to avoid creating nested /site/site/ directories
+        if (basename(\getcwd()) === 'site' && substr($defaultBasePath, 0, 5) === 'site/') {
+            $defaultBasePath = substr($defaultBasePath, 5);
+        }
+
         // get the extra configuration of the top-level package
         $extra = [];
         if ($rootPackage = $this->composer->getPackage()) {
@@ -70,7 +76,7 @@ class BaseInstaller extends LibraryInstaller
      * "installer-name" in the composer.json of the package in question.
      *
      * @param PackageInterface $package
-     * @return string Module or site profile name.
+     * @return string Module or site profile directory name.
      */
     protected function getName(PackageInterface $package) {
         // determine the directory name from its package name
