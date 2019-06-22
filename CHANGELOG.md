@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2019-06-22
+
+### Changed
+- Identify current directory as a site directory if it appears to be site profile directory waiting to be installed.
+
 ## [0.0.5] - 2019-06-16
 
 ### Changed

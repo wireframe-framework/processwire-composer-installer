@@ -45,7 +45,7 @@ class BaseInstaller extends LibraryInstaller
     protected function getBasePath($defaultBasePath) {
         // if we're already in the site directory, remove "site/" from the beginning
         // of the default base path to avoid creating nested /site/site/ directories
-        if (basename(\getcwd()) === 'site' && substr($defaultBasePath, 0, 5) === 'site/') {
+        if (substr($defaultBasePath, 0, 5) === 'site/' && preg_match('/^site(?:-[a-z0-9]+)*$/', basename(getcwd()))) {
             $defaultBasePath = substr($defaultBasePath, 5);
         }
 
