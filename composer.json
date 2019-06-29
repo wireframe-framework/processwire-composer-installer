@@ -3,7 +3,7 @@
     "type": "composer-plugin",
     "description": "Custom Composer installer for the ProcessWire CMS/CMF modules and site profiles.",
     "keywords": [ "composer", "processwire", "installer" ],
-    "homepage": "https://wireframe-framework.com",
+    "homepage": "https://wireframe-framework.com/docs/processwire-composer-installer/",
     "license": "MPL-2.0",
     "authors": [
         {
