@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2019-06-30
+
+### Added
+- Added hari/pw-module as a dependency to force Composer to install it before this package.
+
 ## [1.0.0] - 2019-06-29
 
 ### Added

@@ -68,6 +68,18 @@ And here's an equally stripped-down sample composer.json for a site profile:
 
 - PHP 5.5 or newer
 
+### Why does this project require other installers via composer.json?
+
+In case you're wondering why we currently have hari/pw-module as a requirement for this package,
+there's actually a good reason for this, even though it is admittedly a bit of a hack:
+
+* Composer doesn't let us define package install order, but it prioritizes Composer installers.
+* If multiple installers compete for one package, the installer installed or loaded later wins.
+
+By adding other installers (currently only hari/pw-module) as a dependency for this project we're
+actually effectively forcing Composer to install it *before* this project, which in turn allows us
+to override other installers when it comes to choosing an installer for pw-* packages.
+
 ## License
 
 This project is licensed under the Mozilla Public License Version 2.0.
