@@ -34,6 +34,22 @@ There's a very similar project you might've heard of, called `hari/pw-module`. W
 
 *Note that in order for this work, the module or site profile in question has to have `wireframe-framework/processwire-composer-installer` as a dependency. See next section for instructions for module or site profile authors.*
 
+#### Customizing installer paths
+
+By default site profiles are installed under current working directory, and modules under site/modules/ (or modules/ in case you're already in a site directory). You can, though, override the default paths in the root composer.json of your project:
+
+```
+{
+  "require": {
+    ...
+  },
+  "extra": {
+    "pw-module-path": "site/modules",
+    "pw-site-profile-path": "",
+  }
+}
+```
+
 ### For module or site profile authors
 
 The usage of this project is rather simple. You just need to a) add `wireframe-framework/processwire-composer-installer` as a dependency to your project by manually modifying the composer.json file or by running `composer require wireframe-framework/processwire-composer-installer` in your module or site profile root directory, and b) define the type of your package (via composer.json) as `pw-module` (for modules) or `pw-site-profile` (for site profiles).
