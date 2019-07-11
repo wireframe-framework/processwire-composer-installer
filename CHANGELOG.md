@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2019-07-11
+
+### Added
+- Added instructions to README for customizing the default installer paths for modules and site profiles.
+
 ## [1.0.1] - 2019-06-30
 
 ### Added
