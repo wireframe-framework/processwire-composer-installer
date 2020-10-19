@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2020-10-20
+
+### Changed
+- Revert part of previous release and disable incompatible pw-module installer using event listener in plugin.
+
 ## [1.0.3] - 2020-10-20
 
 ### Fixed

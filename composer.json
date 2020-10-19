@@ -17,11 +17,8 @@
         "hari/pw-module": "^1.0.0"
     },
     "autoload": {
-        "psr-0": {
-            "PW\\Composer\\": "src/"
-        },
         "psr-4": {
-            "wireframe\\": "src/"
+            "wireframe\\ComposerInstaller\\": "src/ComposerInstaller/"
         }
     },
     "extra": {
