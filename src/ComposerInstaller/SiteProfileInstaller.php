@@ -5,6 +5,7 @@ namespace wireframe\ComposerInstaller;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Package\PackageInterface;
 use Composer\Util\Filesystem;
+use React\Promise\PromiseInterface;
 
 /**
  * SiteProfileInstaller class
@@ -35,21 +36,32 @@ class SiteProfileInstaller extends BaseInstaller
      */
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
-        parent::install($repo, $package);
-
         // check if there's a nested site- prefixed directory, in which case we
         // must assume that it's the real site profile directory and move it up
         // one level
-        $path = $this->getInstallPath($package);
-        $site = $this->getNestedSiteDirectoryName($path);
-        if ($site) {
-            $basePath = $this->getBasePath(static::BASE_PATH);
-            $tempPath = $basePath . 'temp-' . \basename($path);
-            $filesystem = new Filesystem();
-            $filesystem->rename($path, $tempPath);
-            $filesystem->rename($tempPath . '/' . $site, $basePath . $site);
-            $filesystem->remove($tempPath);
+        $adjustProfilePath = function() use ($package) {
+            $path = $this->getInstallPath($package);
+            $site = $this->getNestedSiteDirectoryName($path);
+            if ($site) {
+                $basePath = $this->getBasePath(static::BASE_PATH);
+                $tempPath = $basePath . 'temp-' . \basename($path);
+                $filesystem = new Filesystem();
+                $filesystem->rename($path, $tempPath);
+                $filesystem->rename($tempPath . '/' . $site, $basePath . $site);
+                $filesystem->remove($tempPath);
+            }
+        };
+
+        $promise = parent::install($repo, $package);
+
+        // Composer v2 might return a promise here
+        if ($promise instanceof PromiseInterface) {
+            return $promise->then($adjustProfilePath);
         }
+
+        // if not, execute the code right away as parent::install executed synchronously
+        // (composer v1, or v2 without async)
+        $adjustProfilePath();
     }
 
     /**
