@@ -3,6 +3,7 @@
 namespace wireframe\ComposerInstaller;
 
 use Composer\Composer;
+use Composer\DependencyResolver\Operation\UpdateOperation;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
@@ -43,6 +44,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface
             PackageEvents::PRE_PACKAGE_INSTALL => [
                 array('prePackageInstall', 0)
             ],
+            PackageEvents::PRE_PACKAGE_UPDATE => [
+                array('prePackageInstall', 0)
+            ],
         ];
     }
 
@@ -57,7 +61,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      */
     public static function prePackageInstall(PackageEvent $event)
     {
-        $package = $event->getOperation()->getPackage();
+        $operation = $event->getOperation();
+        $package = $operation instanceof UpdateOperation ? $operation->getTargetPackage() : $operation->getPackage();
         if ($package->getType() !== 'pw-module') return;
         $installationManager = $event->getComposer()->getInstallationManager();
         $moduleInstaller = $installationManager->getInstaller('pw-module');

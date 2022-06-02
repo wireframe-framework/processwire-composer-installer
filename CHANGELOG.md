@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2022-06-02
+
+### Fixed
+- Improved compatibility when both wireframe-framework/processwire-composer-installer and hari/pw-module are enabled.
+
 ## [1.1.0] - 2020-12-09
 
 ### Added
